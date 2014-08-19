@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+function gem_list() {
+  gem list --remote |
+    tee ./gem_list
+}
+
+if [ -f ./gem_list ]
+then
+  echo "list is already there"
+  cat ./gem_list
+else
+  echo "getting list"
+  gem_list
+fi
